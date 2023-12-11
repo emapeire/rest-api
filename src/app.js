@@ -1,7 +1,9 @@
 const express = require('express')
+const crypto = require('node:crypto')
 const movies = require('./data/movies.json')
 
 const app = express()
+app.use(express.json())
 app.disable('x-powered-by')
 
 app.get('/movies', (req, res) => {
@@ -23,6 +25,23 @@ app.get('/movies/:id', (req, res) => {
   } else {
     res.status(404).json({ message: 'Movie not found' })
   }
+})
+
+app.post('/movies', (req, res) => {
+  const { title, year, director, duration, poster, genre, rate } = req.body
+  const newMovie = {
+    id: crypto.randomUUID(),
+    title,
+    year,
+    director,
+    duration,
+    poster,
+    genre,
+    rate
+  }
+  // This is not RESTful, but it's just an example
+  movies.push(newMovie)
+  res.status(201).json(newMovie)
 })
 
 const port = process.env.PORT ?? 8080
