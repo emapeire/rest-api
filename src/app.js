@@ -1,6 +1,7 @@
 const express = require('express')
 const crypto = require('node:crypto')
 const movies = require('./data/movies.json')
+const validateMovie = require('./schemas')
 
 const app = express()
 app.use(express.json())
@@ -28,16 +29,15 @@ app.get('/movies/:id', (req, res) => {
 })
 
 app.post('/movies', (req, res) => {
-  const { title, year, director, duration, poster, genre, rate } = req.body
+  const result = validateMovie(req.body)
+
+  if (result.error) {
+    return res.status(422).json(JSON.parse({ error: result.error.message }))
+  }
+
   const newMovie = {
     id: crypto.randomUUID(),
-    title,
-    year,
-    director,
-    duration,
-    poster,
-    genre,
-    rate
+    ...req.data
   }
   // This is not RESTful, but it's just an example
   movies.push(newMovie)
