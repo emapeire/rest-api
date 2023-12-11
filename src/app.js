@@ -32,7 +32,7 @@ app.post('/movies', (req, res) => {
   const result = validateMovie(req.body)
 
   if (result.error) {
-    return res.status(422).json(JSON.parse({ error: result.error.message }))
+    return res.status(422).json({ error: JSON.parse(result.error.message) })
   }
 
   const newMovie = {
