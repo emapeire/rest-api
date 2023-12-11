@@ -37,7 +37,7 @@ app.post('/movies', (req, res) => {
 
   const newMovie = {
     id: crypto.randomUUID(),
-    ...req.data
+    ...req.body
   }
   // This is not RESTful, but it's just an example
   movies.push(newMovie)

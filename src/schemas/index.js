@@ -55,8 +55,8 @@ const movieShema = z.object({
     .max(10)
 })
 
-function validateMovie(object) {
-  return movieShema.safeParse(object)
+function validateMovie(movie) {
+  return movieShema.safeParse(movie)
 }
 
 module.exports = validateMovie
