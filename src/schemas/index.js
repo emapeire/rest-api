@@ -53,6 +53,7 @@ const movieShema = z.object({
     })
     .min(0)
     .max(10)
+    .optional()
 })
 
 function validateMovie(movie) {
