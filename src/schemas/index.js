@@ -38,7 +38,15 @@ const movieShema = z.object({
       required_error: 'Poster is required'
     })
     .url()
-    .endsWith('.jpg'),
+    .refine(
+      (value) =>
+        value.endsWith('.jpg') ||
+        value.endsWith('.png') ||
+        value.endsWith('.jpeg'),
+      {
+        message: 'Poster must be a .jpg, .png, or .jpeg file'
+      }
+    ),
   genre: z
     .array(z.enum(movieGenres), {
       required_error: 'Genre is required',
