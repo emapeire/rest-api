@@ -64,8 +64,12 @@ const movieShema = z.object({
     .optional()
 })
 
-function validateMovie(movie) {
-  return movieShema.safeParse(movie)
+function validateMovie(input) {
+  return movieShema.safeParse(input)
 }
 
-module.exports = validateMovie
+function validatePartialMovie(input) {
+  return movieShema.partial().safeParse(input)
+}
+
+module.exports = { validateMovie, validatePartialMovie }

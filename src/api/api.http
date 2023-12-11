@@ -20,3 +20,11 @@ Content-Type: application/json
   "genre": ["Crime", "Drama"],
   "rate": 9.2
 }
+
+### Update a movie with PATCH
+PATCH http://localhost:8080/movies/dcdd0fad-a94c-4810-8acc-5f108d3b18c3
+Content-Type: application/json
+
+{
+  "year": 1994
+}
