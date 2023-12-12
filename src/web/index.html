@@ -58,11 +58,10 @@
               const id = article.dataset.id
               fetch(`http://localhost:8080/movies/${id}`, {
                 method: 'DELETE'
+              }).then((res) => {
+                if (!res.ok) throw new Error('Error')
+                return article.remove()
               })
-                .then((res) => res.json())
-                .then((data) => {
-                  article.remove()
-                })
             }
           })
         })
