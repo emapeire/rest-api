@@ -5,18 +5,23 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "start": "node --watch src/app.js",
+    "start": "node src/app.js",
     "dev": "node --watch src/app.js",
     "web": "servor src/web index.html 8081 --reload",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ."
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "node",
+    "express",
+    "rest",
+    "api"
+  ],
+  "author": "Emanuel Peire",
+  "license": "MIT",
   "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.18.2",
+    "cors": "2.8.5",
+    "express": "4.18.2",
     "zod": "3.22.4"
   },
   "devDependencies": {
