@@ -1,15 +1,29 @@
 const express = require('express')
 const crypto = require('node:crypto')
 const movies = require('./data/movies.json')
+const cors = require('cors')
 const { validateMovie, validatePartialMovie } = require('./schemas')
 
 const app = express()
 app.use(express.json())
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin || origin === 'http://localhost:8080') {
+        callback(null, true)
+      } else {
+        callback(new Error('Not allowed by CORS'))
+      }
+    },
+    methods: 'GET, POST, PATCH, DELETE',
+    allowedHeaders: 'Content-Type'
+  })
+)
+
 app.disable('x-powered-by')
 
 app.get('/movies', (req, res) => {
-  res.header('Access-Control-Allow-Origin', '*')
-
   const { genre } = req.query
   if (genre) {
     const filteredMovies = movies.filter((movie) =>
@@ -74,8 +88,6 @@ app.patch('/movies/:id', (req, res) => {
 })
 
 app.delete('/movies/:id', (req, res) => {
-  res.header('Access-Control-Allow-Origin', '*')
-
   const { id } = req.params
   const movieIndex = movies.findIndex((movie) => movie.id === id)
 
@@ -88,13 +100,6 @@ app.delete('/movies/:id', (req, res) => {
   res.status(200).json({
     message: 'Movie deleted successfully'
   })
-})
-
-app.options('/movies/:id', (_req, res) => {
-  res.header('Access-Control-Allow-Origin', '*')
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE')
-  res.header('Access-Control-Allow-Headers', 'Content-Type')
-  res.send()
 })
 
 const port = process.env.PORT ?? 8080
