@@ -2,9 +2,15 @@ import express, { json } from 'express'
 import { randomUUID } from 'node:crypto'
 import cors from 'cors'
 import { validateMovie, validatePartialMovie } from './schemas/index.js'
-import fs from 'node:fs'
 
-const movies = JSON.parse(fs.readFileSync('src/data/movies.json', 'utf8'))
+// How to read a JSON file in ESModules
+// import fs from 'node:fs'
+// const movies = JSON.parse(fs.readFileSync('src/data/movies.json', 'utf8'))
+
+// How to read a JSON file with createRequire
+import { createRequire } from 'node:module'
+const require = createRequire(import.meta.url)
+const movies = require('./data/movies.json')
 
 const app = express()
 app.use(json())
