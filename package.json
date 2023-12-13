@@ -8,7 +8,8 @@
     "start": "node --watch src/app.js",
     "dev": "node --watch src/app.js",
     "web": "servor src/web index.html 8081 --reload",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "",
@@ -19,6 +20,11 @@
     "zod": "3.22.4"
   },
   "devDependencies": {
+    "eslint": "^8.55.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-n": "^16.4.0",
+    "eslint-plugin-promise": "^6.1.1",
     "servor": "^4.0.2"
   }
 }

@@ -1,5 +1,5 @@
 import z from 'zod'
-import { movieGenres } from '../enum/index.js'
+import { movieGenres } from '../enum'
 
 const movieShema = z.object({
   title: z
