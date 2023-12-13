@@ -1,6 +1,6 @@
 import express, { json } from 'express'
-import { moviesRouter } from './routes/movies'
-import { corsMiddleware } from './middlewares/cors'
+import { moviesRouter } from './routes/movies.js'
+import { corsMiddleware } from './middlewares/cors.js'
 
 const app = express()
 
