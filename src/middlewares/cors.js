@@ -1,9 +1,10 @@
 import cors from 'cors'
 
-export const corsMiddleware = () =>
+const ALLOWED_ORIGINS = ['http://localhost:8080', 'http://localhost:8081']
+
+export const corsMiddleware = ({ allowedOrigins = ALLOWED_ORIGINS } = {}) =>
   cors({
     origin: (origin, callback) => {
-      const allowedOrigins = ['http://localhost:8080', 'http://localhost:8081']
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true)
       } else {
