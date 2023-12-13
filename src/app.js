@@ -10,15 +10,13 @@ app.use(express.json())
 app.use(
   cors({
     origin: (origin, callback) => {
-      const allowedOrigins = ['http://localhost:8080']
+      const allowedOrigins = ['http://localhost:8080', 'http://localhost:8081']
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true)
       } else {
         callback(new Error('Not allowed by CORS'))
       }
-    },
-    methods: 'GET, POST, PATCH, DELETE',
-    allowedHeaders: 'Content-Type'
+    }
   })
 )
 
