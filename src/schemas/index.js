@@ -1,5 +1,5 @@
-const z = require('zod')
-const movieGenres = require('../enum')
+import z from 'zod'
+import { movieGenres } from '../enum/index.js'
 
 const movieShema = z.object({
   title: z
@@ -64,12 +64,10 @@ const movieShema = z.object({
     .optional()
 })
 
-function validateMovie(input) {
+export function validateMovie(input) {
   return movieShema.safeParse(input)
 }
 
-function validatePartialMovie(input) {
+export function validatePartialMovie(input) {
   return movieShema.partial().safeParse(input)
 }
-
-module.exports = { validateMovie, validatePartialMovie }

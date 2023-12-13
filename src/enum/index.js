@@ -1,4 +1,4 @@
-const movieGenres = [
+export const movieGenres = [
   'Action',
   'Comedy',
   'Crime',
@@ -12,5 +12,3 @@ const movieGenres = [
   'Thriller',
   'Biography'
 ]
-
-module.exports = movieGenres

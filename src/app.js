@@ -1,11 +1,13 @@
-const express = require('express')
-const crypto = require('node:crypto')
-const movies = require('./data/movies.json')
-const cors = require('cors')
-const { validateMovie, validatePartialMovie } = require('./schemas')
+import express, { json } from 'express'
+import { randomUUID } from 'node:crypto'
+import cors from 'cors'
+import { validateMovie, validatePartialMovie } from './schemas/index.js'
+import fs from 'node:fs'
+
+const movies = JSON.parse(fs.readFileSync('src/data/movies.json', 'utf8'))
 
 const app = express()
-app.use(express.json())
+app.use(json())
 
 app.use(
   cors({
@@ -51,7 +53,7 @@ app.post('/movies', (req, res) => {
   }
 
   const newMovie = {
-    id: crypto.randomUUID(),
+    id: randomUUID(),
     ...result.data
   }
   // This is not RESTful, but it's just an example
