@@ -3,6 +3,9 @@ import { randomUUID } from 'node:crypto'
 import cors from 'cors'
 import { validateMovie, validatePartialMovie } from './schemas/index.js'
 
+// How to read a JSON file with type: 'json'
+// import movies from './data/movies.json' with { type: 'json' }
+
 // How to read a JSON file in ESModules
 // import fs from 'node:fs'
 // const movies = JSON.parse(fs.readFileSync('src/data/movies.json', 'utf8'))
