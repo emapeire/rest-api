@@ -62,13 +62,6 @@ export class MovieModel {
     }
   }
 
-  static async delete({ id }) {
-    const db = await connect()
-    const objectId = new ObjectId(id)
-    const { deletedCount } = await db.deleteOne({ _id: objectId })
-    return deletedCount > 0
-  }
-
   static async update({ id, input }) {
     const db = await connect()
     const objectId = new ObjectId(id)
@@ -82,5 +75,12 @@ export class MovieModel {
     if (!ok) return false
 
     return value
+  }
+
+  static async delete({ id }) {
+    const db = await connect()
+    const objectId = new ObjectId(id)
+    const { deletedCount } = await db.deleteOne({ _id: objectId })
+    return deletedCount > 0
   }
 }
