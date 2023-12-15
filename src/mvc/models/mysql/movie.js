@@ -38,7 +38,7 @@ export class MovieModel {
     }
 
     const [movies] = await connection.query(
-      'SELECT title, year, director, duration, poster, rate, BIN_TO_UUID(id) id FROM movie;'
+      'SELECT BIN_TO_UUID(id) id, title, year, director, duration, poster, rate FROM movie;'
     )
 
     return movies
@@ -46,8 +46,8 @@ export class MovieModel {
 
   static async getById({ id }) {
     const [movies] = await connection.query(
-      `SELECT title, year, director, duration, poster, rate, BIN_TO_UUID(id) id
-        FROM movie WHERE id = UUID_TO_BIN(?);`,
+      `SELECT BIN_TO_UUID(id) id, title, year, director, duration, poster, rate
+      FROM movie WHERE id = UUID_TO_BIN(?);`,
       [id]
     )
 
@@ -84,7 +84,7 @@ export class MovieModel {
     }
 
     const [movies] = await connection.query(
-      `SELECT title, year, director, duration, poster, rate, BIN_TO_UUID(id) id
+      `SELECT BIN_TO_UUID(id) id, title, year, director, duration, poster, rate
         FROM movie WHERE id = UUID_TO_BIN(?);`,
       [uuid]
     )
