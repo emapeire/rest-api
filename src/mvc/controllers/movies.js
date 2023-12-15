@@ -21,7 +21,7 @@ export class MovieController {
     if (result.error) {
       return res.status(422).json({ error: JSON.parse(result.error.message) })
     }
-    const newMovie = await MovieModel.create({ movie: result.data })
+    const newMovie = await MovieModel.create({ input: result.data })
     res.status(201).json(newMovie)
   }
 
@@ -31,7 +31,7 @@ export class MovieController {
       return res.status(422).json({ error: JSON.parse(result.error.message) })
     }
     const { id } = req.params
-    const updatedMovie = await MovieModel.update({ id, movie: result.data })
+    const updatedMovie = await MovieModel.update({ id, input: result.data })
     res.status(200).json({
       message: 'Movie updated successfully',
       movie: updatedMovie
