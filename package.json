@@ -5,8 +5,9 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "start": "node src/app.js",
-    "dev": "node --watch src/app.js",
+    "start:local": "node --watch src/server/local-fs.js",
+    "start:mysql": "node --watch src/server/mysql.js",
+    "start:mongo": "node --watch src/server/mongodb.js",
     "web": "servor src/web index.html 8081 --reload",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ."
