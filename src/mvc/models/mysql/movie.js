@@ -69,7 +69,7 @@ export class MovieModel {
 
     // todo: create genre conexion
 
-    // crypto.randomUUID()
+    // create our own uuid with sql
     const [uuidResult] = await connection.query('SELECT UUID() uuid;')
     const [{ uuid }] = uuidResult
 
@@ -80,6 +80,7 @@ export class MovieModel {
         [title, year, director, duration, poster, rate]
       )
     } catch (e) {
+      // don't show the error to the user
       throw new Error('Error creating movie')
     }
 
