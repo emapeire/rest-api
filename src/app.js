@@ -12,6 +12,10 @@ export const createApp = ({ movieModel }) => {
 
   app.use('/movies', createMovieRouter({ movieModel }))
 
+  app.get('/', (req, res) => {
+    res.sendFile(process.cwd() + '/src/client/index.html')
+  })
+
   const port = process.env.PORT ?? 8080
 
   app.listen(port, () => {

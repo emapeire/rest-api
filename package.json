@@ -8,7 +8,6 @@
     "start:local": "node --watch src/server/local-fs.js",
     "start:mysql": "node --watch src/server/mysql.js",
     "start:mongo": "node --watch src/server/mongodb.js",
-    "web": "servor src/web index.html 8081 --reload",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ."
   },
@@ -33,7 +32,6 @@
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-n": "^16.4.0",
-    "eslint-plugin-promise": "^6.1.1",
-    "servor": "^4.0.2"
+    "eslint-plugin-promise": "^6.1.1"
   }
 }

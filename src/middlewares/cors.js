@@ -1,6 +1,6 @@
 import cors from 'cors'
 
-const ALLOWED_ORIGINS = ['http://localhost:8080', 'http://localhost:8081']
+const ALLOWED_ORIGINS = ['http://localhost:8080']
 
 export const corsMiddleware = ({ allowedOrigins = ALLOWED_ORIGINS } = {}) =>
   cors({
